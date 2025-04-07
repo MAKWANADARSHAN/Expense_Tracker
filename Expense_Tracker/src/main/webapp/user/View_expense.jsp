@@ -12,7 +12,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>View Expense</title>
 <%@include file="../Component/Cdnfile.jsp"%>
 </head>
 <body>
@@ -77,6 +77,7 @@
 
 							</tbody>
 						</table>
+						
 					</div>
 				</div>
 			</div>

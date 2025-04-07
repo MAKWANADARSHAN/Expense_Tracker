@@ -30,15 +30,15 @@
 		data-bs-ride="carousel">
 		<div class="carousel-inner">
 			<div class="carousel-item active">
-				<img src="/Image/ex1.jpg" class="d-block w-100 carousel-img"
+				<img src="Image/Ex1.jpg" class="d-block w-100 carousel-img"
 					alt="Slide 1">
 			</div>
 			<div class="carousel-item">
-				<img src="/Image/ex2.jpg" class="d-block w-100 carousel-img"
+				<img src="Image/Ex2.jpg" class="d-block w-100 carousel-img"
 					alt="Slide 2">
 			</div>
 			<div class="carousel-item">
-				<img src="/Image/ex3.jpg" class="d-block w-100 carousel-img"
+				<img src="Image/Ex3.jpg" class="d-block w-100 carousel-img"
 					alt="Slide 3">
 			</div>
 		</div>

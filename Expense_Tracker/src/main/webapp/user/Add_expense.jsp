@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Add Expense</title>
 <%@include file="../Component/Cdnfile.jsp"%>
 <style type="text/css">
 .card-sh {

@@ -55,11 +55,19 @@ public class UserDao {
 	    
 	    return u;
 	}
+	public User getUserByEmail(String email) {
+	    User user = null;
+	    try {
+	        String query = "from User where userEmail = :email";
+	        user = (User) this.factory.openSession().createQuery(query)
+	                .setParameter("email", email)
+	                .uniqueResult();
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+	    return user;
+	}
 
-	
-	
-	
-	
 }
 
 

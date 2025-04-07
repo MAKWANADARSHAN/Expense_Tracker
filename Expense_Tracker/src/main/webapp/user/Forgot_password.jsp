@@ -6,8 +6,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Login</title>
-<%@include file="Component/Cdnfile.jsp"%>
+<title>Forgot Password</title>
+<%@include file="../Component/Cdnfile.jsp"%>
 
 <style type="text/css">
 .card-sh {
@@ -16,38 +16,35 @@
 </style>
 </head>
 <body>
-	<%@include file="Component/Navbar.jsp"%>
+	<%@include file="../Component/Navbar.jsp"%>
 	<div class="container p-5">
 		<div class="row">
 			<div class="col-md-6 offset-md-3">
 				<div class="card card-sh">
 					<div class="card-header">
-						<p class="text-center fs-3">Login</p>
+						<p class="text-center fs-3">Forgot Password</p>
 						<c test="$(not empty msg)">
 						<P class="text-center text-danger fs-4">${msg}</P>
 						</c>
 					</div>
 					<div class="card-body">
-						<form action="login" method="post">
+						<form action="../ResetPasswordServlet" method="post">
 
 							<div class="mb-3">
 								<label for="email" class="form-label">Email</label> <input
 									type="email" name="email" id="email" class="form-control">
 							</div>
 							<div class="mb-3">
-								<label for="password" class="form-label">Password</label> <input
+								<label for="password" class="form-label">New Password</label> <input
 									type="password" name="password" id="password"
-									class="form-control"> <a href="user/Forgot_password.jsp">Forgot
-									Password?</a>
+									class="form-control">
 
 							</div>
 
 							<div class="mb-3">
-								<button type="submit" class="btn btn-success col-md-12">Login</button>
-								<div class="text-center mt-2">
-									Don't have account <a href="Register.jsp"
-										class="text-decoration-none">create one</a>
-								</div>
+								<button type="submit" class="btn btn-success col-md-12">Reset
+									Password</button>
+
 							</div>
 						</form>
 					</div>
@@ -55,6 +52,5 @@
 			</div>
 		</div>
 	</div>
-
 </body>
 </html>
