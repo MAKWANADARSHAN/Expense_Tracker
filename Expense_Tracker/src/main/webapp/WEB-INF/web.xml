@@ -18,6 +18,7 @@
 		<url-pattern>/ResetPasswordServlet</url-pattern>
 	</servlet-mapping>
 
+
 	<!-- Welcome Page -->
 	<welcome-file-list>
 		<welcome-file>Index.jsp</welcome-file>

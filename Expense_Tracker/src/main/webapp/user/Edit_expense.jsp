@@ -18,6 +18,7 @@
 </style>
 </head>
 <body>
+
 	<c:if test="${empty loginUser}">
 		<c:redirect url="../Login.jsp"></c:redirect>
 	</c:if>
@@ -27,12 +28,72 @@
 	ExpenseDao dao = new ExpenseDao(HibernateUtil.getSessionFactory());
 	Expense ex = dao.getExpenseById(id);
 	%>
-	<%@include file="../Component/Navbar.jsp"%>
-	<div class="comtainer">
-		<div class="row">
-			<div class="col-md-4 offset-md-4">
+	 <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+      <div class="container">
+        <a class="navbar-brand fw-bold" href="#">
+          <i class="fa-solid fa-wallet"></i> Expense Tracker
+        </a>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class=".collapse navbar-collapse">
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+              <a class="nav-link active" href="Home.jsp">
+                <i class="fa-solid fa-house"></i> Home
+              </a>
+              <li class="nav-item"><a class="nav-link active"
+                href="Add_expense.jsp"> <i class="fa-solid fa-plus"></i> Add
+    
+                  Expense
+    
+              </a></li>
+    
+              <li class="nav-item"><a class="nav-link active"
+                href="View_expense.jsp"> <i class="fa-solid fa-list"></i> View
+    
+                  Expense
+    
+              </a></li>
+            </li>
+          </ul>
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a
+                class="nav-link btn btn-outline-light px-3 me-2"
+                href="#"
+              >
+                <i class="fa-solid fa-circle-user"></i> ${loginUser.fullname}
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a
+                class="nav-link btn btn-light text-dark px-3"
+                href="../logout"
+              >
+                <i class="fa-solid fa-right-to-brackets"></i> Logout
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+	
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-12 col-md-8 col-lg-6 p-5">
 				<div class="card card-sh mt-5">
-					<div class="card-hedder text-center">
+					<div class="card-header text-center">
 						<p class="fs-3">Edit Expense</p>
 					</div>
 					<div class="card-body">
@@ -58,7 +119,7 @@
 									class="form-control" value="<%=ex.getPrice()%>">
 							</div>
 							<input type="hidden" name="id" value="<%=ex.getId()%>">
-							<button class="btn btn-success col-md-12">Update</button>
+							<button class="btn btn-success col-12">Update</button>
 						</form>
 					</div>
 				</div>

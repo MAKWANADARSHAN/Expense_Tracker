@@ -12,6 +12,7 @@
 <%@include file="Component/Cdnfile.jsp"%>
 
 <style>
+
 /* Make carousel images responsive */
 .carousel-img {
 	height: 100vh;
@@ -21,8 +22,39 @@
 
 </head>
 <body>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-success">
+		<div class="container">
+			<a class="navbar-brand fw-bold" href="#"> <i
+				class="fa-solid fa-wallet"></i> Expense Tracker
+			</a>
 
-	<%@include file="Component/Navbar.jsp"%>
+			<button class="navbar-toggler" type="button"
+				data-bs-toggle="collapse" data-bs-target="#navbarNav"
+				aria-controls="navbarNav" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class=".collapse navbar-collapse">
+				<ul class="navbar-nav me-auto">
+					<li class="nav-item"><a class="nav-link active"
+						href="Index.jsp"> <i class="fa-solid fa-house"></i> Home
+					</a></li>
+				</ul>
+				<ul class="navbar-nav ms-auto">
+					<li class="nav-item"><a
+						class="nav-link btn btn-outline-light px-3 me-2" href="Login.jsp">
+							<i class="fa-solid fa-right-to-bracket"></i> Login
+					</a></li>
+
+					<li class="nav-item"><a
+						class="nav-link btn btn-light text-dark px-3" href="Register.jsp">
+							<i class="fa-solid fa-user-plus"></i> Register
+					</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
 
 
 

@@ -6,9 +6,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Login</title>
-<%@include file="Component/Cdnfile.jsp"%>
+<title>Forgot Password</title>
+<%@include file="../Component/Cdnfile.jsp"%>
 
 <style type="text/css">
 .card-sh {
@@ -55,31 +54,29 @@
 			<div class="col-12 col-md-8 col-lg-6 col-xl-5 p-5">
 				<div class="card card-sh">
 					<div class="card-header">
-						<p class="text-center fs-3">Login</p>
-
+						<p class="text-center fs-3">Forgot Password</p>
+						<c test="$(not empty msg)">
+						<P class="text-center text-danger fs-4">${msg}</P>
+						</c>
 					</div>
 					<div class="card-body">
-						<form action="login" method="post">
+						<form action="../ResetPasswordServlet" method="post">
 
 							<div class="mb-3">
 								<label for="email" class="form-label">Email</label> <input
 									type="email" name="email" id="email" class="form-control">
 							</div>
 							<div class="mb-3">
-								<label for="password" class="form-label">Password</label> <input
+								<label for="password" class="form-label">New Password</label> <input
 									type="password" name="password" id="password"
-									class="form-control"> <a
-									href="Forgot_password.jsp" class="d-block">Forgot
-									Password?</a>
+									class="form-control">
 
 							</div>
 
 							<div class="mb-3">
-								<button type="submit" class="btn btn-success col-12">Login</button>
-								<div class="text-center mt-2">
-									Don't have account <a href="Register.jsp"
-										class="text-decoration-none">create one</a>
-								</div>
+								<button type="submit" class="btn btn-success col-12">Reset
+									Password</button>
+
 							</div>
 						</form>
 					</div>
@@ -87,32 +84,5 @@
 			</div>
 		</div>
 	</div>
-	<c:if test="${not empty msg}">
-		<div class="modal fade" id="messageModal" tabindex="-1">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title">Message</h5>
-						<button type="button" class="btn-close" data-bs-dismiss="modal"
-							aria-label="Close"></button>
-					</div>
-					<div class="modal-body">
-						<p class="text-center text-danger fs-4">${msg}</p>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary"
-							data-bs-dismiss="modal">Close</button>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<script>
-			var myModal = new bootstrap.Modal(document
-					.getElementById('messageModal'))
-			myModal.show()
-		</script>
-	</c:if>
-
 </body>
 </html>

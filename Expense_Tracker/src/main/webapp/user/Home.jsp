@@ -21,7 +21,67 @@
 	<c:if test="${empty loginUser}">
 		<c:redirect url="../Login.jsp"></c:redirect>
 	</c:if>
-	<%@include file="../Component/Navbar.jsp"%>
+	 <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+      <div class="container">
+        <a class="navbar-brand fw-bold" href="#">
+          <i class="fa-solid fa-wallet"></i> Expense Tracker
+        </a>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class=".collapse navbar-collapse">
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+              <a class="nav-link active" href="Home.jsp">
+                <i class="fa-solid fa-house"></i> Home
+              </a>
+              <li class="nav-item"><a class="nav-link active"
+                href="Add_expense.jsp"> <i class="fa-solid fa-plus"></i> Add
+    
+                  Expense
+    
+              </a></li>
+    
+              <li class="nav-item"><a class="nav-link active"
+                href="View_expense.jsp"> <i class="fa-solid fa-list"></i> View
+    
+                  Expense
+    
+              </a></li>
+            </li>
+          </ul>
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a
+                class="nav-link btn btn-outline-light px-3 me-2"
+                href="#"
+              >
+                <i class="fa-solid fa-circle-user"></i> ${loginUser.fullname}
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a
+                class="nav-link btn btn-light text-dark px-3"
+                href="../logout"
+              >
+                <i class="fa-solid fa-right-to-bracket"></i> Logout
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+	
 
 	<div id="carouselExampleControls" class="carousel slide"
 		data-bs-ride="carousel">
