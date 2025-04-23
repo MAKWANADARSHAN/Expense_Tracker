@@ -1,44 +1,51 @@
 package com.servlet;
 
 import java.io.IOException;
-import javax.servlet.*;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.*;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import com.db.HibernateUtil;
 import com.enitity.User;
-import com.helper.FactoryProvider;
 
-@WebServlet("/resetPassword")
+@WebServlet("/ResetPasswordServlet")
 public class ResetPasswordServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
-		String email = request.getParameter("email");
+		String oldPassword = request.getParameter("oldPassword");
 		String newPassword = request.getParameter("newPassword");
 
-		Session session = FactoryProvider.getFactory().openSession();
-		Transaction tx = session.beginTransaction();
+		HttpSession session = request.getSession();
+		User user = (User) session.getAttribute("userObj");
 
-		// Check user
-		User user = (User) session.createQuery("from User where email = :email").setParameter("email", email)
-				.uniqueResult();
-
-		if (user != null) {
-			user.setPassword(newPassword);
-			session.update(user);
-			tx.commit();
-			request.setAttribute("msg", "Password reset successfully!");
-			 request.getRequestDispatcher("Login.jsp").forward(request, response);
+		if (user != null && user.getPassword().equals(oldPassword)) {
+			Session hibernateSession = HibernateUtil.getSessionFactory().openSession();
+			Transaction tx = hibernateSession.beginTransaction();
+			try {
+				user.setPassword(newPassword);
+				hibernateSession.update(user);
+				tx.commit();
+				request.setAttribute("msg", "Password updated successfully.");
+			} catch (Exception e) {
+				tx.rollback();
+				request.setAttribute("msg", "Something went wrong.");
+			} finally {
+				hibernateSession.close();
+			}
 		} else {
-			request.setAttribute("msg", "User not found!");
-			 request.getRequestDispatcher("user/Forgot_password.jsp").forward(request, response);
+			request.setAttribute("msg", "Old password incorrect.");
 		}
 
-		session.close();
-		RequestDispatcher rd = request.getRequestDispatcher("Login.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("reset_password.jsp");
 		rd.forward(request, response);
 	}
+
 }

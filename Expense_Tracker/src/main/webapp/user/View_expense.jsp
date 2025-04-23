@@ -14,6 +14,7 @@
 <meta charset="UTF-8">
 <title>View Expense</title>
 <%@include file="../Component/Cdnfile.jsp"%>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
 
@@ -88,9 +89,7 @@
 				<div class="card">
 					<div class="card-header text-center">
 						<p class="fs-3">All Expenses</p>
-						<c test="$(not empty msg)">
-						<P class="text-center text-danger fs-4">${msg}</P>
-						</c>
+						
 					</div>
 					<div class="card-body">
 						<div class="table-responsive">
@@ -144,6 +143,28 @@
 			</div>
 		</div>
 	</div>
+</div>
+	   <!-- SweetAlert2 -->
+            <c:if test="${not empty msg}">
+                <script>
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Updated',
+                        text: '${msg}'
+                    });
+                </script>
+                 <c:remove var="msg" scope="session" />
+            </c:if>
 
+            <c:if test="${not empty error}">
+                <script>
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: '${error}'
+                    });
+                </script>
+                 <c:remove var="msg" scope="session" />
+            </c:if>
 </body>
 </html>

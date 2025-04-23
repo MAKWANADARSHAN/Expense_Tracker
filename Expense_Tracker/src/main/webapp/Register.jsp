@@ -8,6 +8,8 @@
 <meta charset="UTF-8">
 <title>Register</title>
 <%@include file="Component/Cdnfile.jsp"%>
+<!-- SweetAlert2 CDN -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <style type="text/css">
 .card-sh {
 	box-shadow: 0 0 6px 0 rgba(0, 0, 0, 3);
@@ -17,52 +19,37 @@
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-success">
-      <div class="container">
-        <a class="navbar-brand fw-bold" href="Index.jsp">
-          <i class="fa-solid fa-wallet"></i> Expense Tracker
-        </a>
+		<div class="container">
+			<a class="navbar-brand fw-bold" href="Index.jsp"> <i
+				class="fa-solid fa-wallet"></i> Expense Tracker
+			</a>
 
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class=".collapse navbar-collapse">
-          <ul class="navbar-nav me-auto">
-            <li class="nav-item">
-              <a class="nav-link active" href="Index.jsp">
-                <i class="fa-solid fa-house"></i> Home
-              </a>
-            </li>
-          </ul>
-          <ul class="navbar-nav ms-auto">
-            <li class="nav-item">
-              <a
-                class="nav-link btn btn-outline-light px-3 me-2"
-                href="Login.jsp"
-              >
-                <i class="fa-solid fa-right-to-bracket"></i> Login
-              </a>
-            </li>
+			<button class="navbar-toggler" type="button"
+				data-bs-toggle="collapse" data-bs-target="#navbarNav"
+				aria-controls="navbarNav" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class=".collapse navbar-collapse">
+				<ul class="navbar-nav me-auto">
+					<li class="nav-item"><a class="nav-link active"
+						href="Index.jsp"> <i class="fa-solid fa-house"></i> Home
+					</a></li>
+				</ul>
+				<ul class="navbar-nav ms-auto">
+					<li class="nav-item"><a
+						class="nav-link btn btn-outline-light px-3 me-2" href="Login.jsp">
+							<i class="fa-solid fa-right-to-bracket"></i> Login
+					</a></li>
 
-            <li class="nav-item">
-              <a
-                class="nav-link btn btn-light text-dark px-3"
-                href="Register.jsp"
-              >
-                <i class="fa-solid fa-user-plus"></i> Register
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+					<li class="nav-item"><a
+						class="nav-link btn btn-light text-dark px-3" href="Register.jsp">
+							<i class="fa-solid fa-user-plus"></i> Register
+					</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
 
 	<div class="container">
 		<div class="row justify-content-center">
@@ -108,7 +95,7 @@
 			</div>
 		</div>
 	</div>
-	<c:if test="${not empty msg}">
+	<!--	<c:if test="${not empty msg}">
 		<div class="modal fade" id="messageModal" tabindex="-1">
 			<div class="modal-dialog">
 				<div class="modal-content">
@@ -134,7 +121,33 @@
 			var myModal = new bootstrap.Modal(document
 					.getElementById('messageModal'))
 			myModal.show()
+		</script>  -->
+	<!-- SweetAlert2 Message Trigger -->
+	<c:if test="${not empty msg}">
+		<script>
+			Swal.fire({
+				icon : 'success',
+				title : 'Success',
+				text : '${msg}',
+				confirmButtonColor : '#3085d6'
+			});
 		</script>
+		<c:remove var="msg" scope="session" />
+
 	</c:if>
+
+	<c:if test="${not empty error}">
+		<script>
+			Swal.fire({
+				icon : 'error',
+				title : 'Error',
+				text : '${error}',
+				confirmButtonColor : '#d33'
+			});
+		</script>
+
+		<c:remove var="msg" scope="session" />
+	</c:if>
+
 </body>
 </html>

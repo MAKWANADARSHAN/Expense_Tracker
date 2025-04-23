@@ -6,16 +6,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<title>Reset Password</title>
 <%@include file="../Component/Cdnfile.jsp"%>
-<title>Home</title>
-<style>
-/* Make carousel images responsive */
-.carousel-img {
-	height: 100vh;
-	object-fit: cover;
+
+<style type="text/css">
+.card-sh {
+	box-shadow: 0 0 6px 0 rgba(0, 0, 0, 3);
 }
 </style>
-
 </head>
 <body>
 	<c:if test="${empty loginUser}">
@@ -68,34 +66,31 @@
 		</div>
 	</nav>
 
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-12 col-md-8 col-lg-6 col-xl-5 p-5">
+				<div class="card card-sh">
+					<div class="card-header">
+						<p class="text-center fs-3">Reset Password</p>
 
-	<div id="carouselExampleControls" class="carousel slide"
-		data-bs-ride="carousel">
-		<div class="carousel-inner">
-			<div class="carousel-item active">
-				<img src="../Image/Ex1.jpg" class="d-block w-100 carousel-img"
-					alt="Slide 1">
-			</div>
-			<div class="carousel-item">
-				<img src="../Image/Ex2.jpg" class="d-block w-100 carousel-img"
-					alt="Slide 2">
-			</div>
-			<div class="carousel-item">
-				<img src="../Image/Ex3.jpg" class="d-block w-100 carousel-img"
-					alt="Slide 3">
+					</div>
+					<div class="card-body">
+						<form action="../ResetPasswordServlet" method="post">
+							<div class="mb-3">
+								<label>Old Password</label> <input type="password"
+									name="oldPassword" class="form-control" required>
+							</div>
+							<div class="mb-3">
+								<label>New Password</label> <input type="password"
+									name="newPassword" class="form-control" required>
+							</div>
+							<button type="submit" class="btn btn-success w-100">Update
+								Password</button>
+						</form>
+					</div>
+				</div>
 			</div>
 		</div>
-
-		<button class="carousel-control-prev" type="button"
-			data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-			<span class="carousel-control-prev-icon" aria-hidden="true"></span> <span
-				class="visually-hidden">Previous</span>
-		</button>
-		<button class="carousel-control-next" type="button"
-			data-bs-target="#carouselExampleControls" data-bs-slide="next">
-			<span class="carousel-control-next-icon" aria-hidden="true"></span> <span
-				class="visually-hidden">Next</span>
-		</button>
 	</div>
 	<!-- SweetAlert2 -->
 	<c:if test="${not empty msg}">
@@ -123,6 +118,5 @@
 		</script>
 		<c:remove var="msg" scope="session" />
 	</c:if>
-
 </body>
 </html>

@@ -1,6 +1,5 @@
 package com.dao;
 
-
 import org.hibernate.query.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -42,32 +41,18 @@ public class UserDao {
 	}
 
 	public User login(String email, String password) {
-	    User u = null;
+		User u = null;
 
-	    session = factory.openSession();
+		session = factory.openSession();
 
-	    Query<User> q = session.createQuery("from User where email=:em and password=:ps", User.class);
-	    
-	    q.setParameter("em", email);
-	    q.setParameter("ps", password);
-	     
-	    u = q.uniqueResult();
-	    
-	    return u;
-	}
-	public User getUserByEmail(String email) {
-	    User user = null;
-	    try {
-	        String query = "from User where userEmail = :email";
-	        user = (User) this.factory.openSession().createQuery(query)
-	                .setParameter("email", email)
-	                .uniqueResult();
-	    } catch (Exception e) {
-	        e.printStackTrace();
-	    }
-	    return user;
+		Query<User> q = session.createQuery("from User where email=:em and password=:ps", User.class);
+
+		q.setParameter("em", email);
+		q.setParameter("ps", password);
+
+		u = q.uniqueResult();
+
+		return u;
 	}
 
 }
-
-

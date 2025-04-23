@@ -9,7 +9,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Login</title>
 <%@include file="Component/Cdnfile.jsp"%>
-
+<!-- SweetAlert2 CDN -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <style type="text/css">
 .card-sh {
 	box-shadow: 0 0 6px 0 rgba(0, 0, 0, 3);
@@ -68,9 +69,8 @@
 							<div class="mb-3">
 								<label for="password" class="form-label">Password</label> <input
 									type="password" name="password" id="password"
-									class="form-control"> <a
-									href="Forgot_password.jsp" class="d-block">Forgot
-									Password?</a>
+									class="form-control"> <a href="reset_password.jsp"
+									class="d-block">Forgot Password?</a>
 
 							</div>
 
@@ -87,31 +87,35 @@
 			</div>
 		</div>
 	</div>
+	<!-- SweetAlert2 Popups -->
 	<c:if test="${not empty msg}">
-		<div class="modal fade" id="messageModal" tabindex="-1">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title">Message</h5>
-						<button type="button" class="btn-close" data-bs-dismiss="modal"
-							aria-label="Close"></button>
-					</div>
-					<div class="modal-body">
-						<p class="text-center text-danger fs-4">${msg}</p>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary"
-							data-bs-dismiss="modal">Close</button>
-					</div>
-				</div>
-			</div>
-		</div>
-
 		<script>
-			var myModal = new bootstrap.Modal(document
-					.getElementById('messageModal'))
-			myModal.show()
+			Swal.fire({
+				position : 'top',
+				title : '${msg}',
+
+				confirmButtonColor : '#3085d6',
+				timer : 1500, // 1.5 seconds
+				showConfirmButton : false
+			});
 		</script>
+		<c:remove var="msg" scope="session" />
+
+	</c:if>
+
+	<c:if test="${not empty error}">
+		<script>
+			Swal.fire({
+
+				title : 'Login Failed',
+				text : '${error}',
+				confirmButtonColor : '#d33',
+				timer : 1500, // 1.5 seconds
+				showConfirmButton : false
+			});
+		</script>
+		<c:remove var="msg" scope="session" />
+
 	</c:if>
 
 </body>

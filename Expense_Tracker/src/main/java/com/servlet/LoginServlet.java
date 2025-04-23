@@ -31,10 +31,11 @@ public class LoginServlet extends HttpServlet {
 		HttpSession session=req.getSession();
 		if (u==null) {
 			
-			session.setAttribute("msg","invalid Email & Password");
+			session.setAttribute("msg","invalid Email Or Password");
 			resp.sendRedirect("Login.jsp");
 		}else {
 			session.setAttribute("loginUser", u);
+			session.setAttribute("msg","Login successful!");
 			resp.sendRedirect("user/Home.jsp");
 		}
 		

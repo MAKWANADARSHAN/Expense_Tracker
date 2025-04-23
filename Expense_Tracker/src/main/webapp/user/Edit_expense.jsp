@@ -9,8 +9,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Edit Expense</title>
 <%@include file="../Component/Cdnfile.jsp"%>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <style type="text/css">
 .card-sh {
 	box-shadow: 0 0 6px 0 rgba(0, 0, 0, 3);
@@ -125,6 +126,6 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	
 </body>
 </html>
